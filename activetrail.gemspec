@@ -9,10 +9,6 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Celso Fernandes"]
   spec.email         = ["fernandes@zertico.com"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
-
   spec.summary       = %q{Integration between ActiveAdmin and Trailblazer}
   spec.description   = %q{Provide a cool, and seamless, integration between ActiveAdmin and Trailblazer, so you can you your operations inside ActiveAdmin}
   spec.homepage      = "https://github.com/fernandes/activetrail"
