@@ -9,3 +9,4 @@
 /tmp/
 /vendor/cache
 /vendor/bundle
+/spec/internal/db/*.sqlite

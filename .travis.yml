@@ -1,3 +1,8 @@
 language: ruby
+cache: bundler
+bundler_args: --without production
+gemfile:
+  - gemfiles/rails4_2.gemfile
 rvm:
   - 2.2.0
+env: CODECLIMATE_REPO_TOKEN=ae1bcbe525ec96db3dc63561ba41749adf03973e618c4cab16556e4e8c7adab6
