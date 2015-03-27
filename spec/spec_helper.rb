@@ -12,6 +12,7 @@ require 'bundler'
 require 'combustion'
 Combustion.initialize! :all
 
+require 'trailblazer'
 require 'trailblazer/autoloading'
 require 'rspec/rails'
 require File.join(File.dirname(__FILE__), 'internal/app/models', 'book.rb')
