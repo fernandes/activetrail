@@ -15,6 +15,7 @@ Combustion.initialize! :all
 require 'trailblazer'
 require 'trailblazer/autoloading'
 require 'rspec/rails'
+require 'database_cleaner'
 require File.join(File.dirname(__FILE__), 'internal/app/models', 'book.rb')
 require File.join(File.dirname(__FILE__), 'internal/app/admin', 'book.rb')
 
@@ -117,6 +118,18 @@ require File.join(File.dirname(__FILE__), 'support', 'integration_example_group.
 
 RSpec.configure do |config|
   config.include RSpec::Rails::IntegrationExampleGroup, file_path: /\bspec\/requests\//
+  
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+  
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
   config.before(:each) do
     @__original_application = ActiveAdmin.application
     application = ActiveAdmin::Application.new
