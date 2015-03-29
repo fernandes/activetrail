@@ -22,7 +22,7 @@ In meanwhile you can use my forks:
 ```ruby
 gem "trailblazer", github: "fernandes/trailblazer", branch: "master"
 gem "reform", github: "fernandes/reform", branch: "feature/expose_contract_fields"
-gem "formtastic", github: "feature/get_fields_from_form_object"
+gem "formtastic", github: "fernandes/formtastic", branch: "feature/get_fields_from_form_object"
 ```
 
 I'm keeping my branches even with upstream's util everything is ok.
