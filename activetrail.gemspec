@@ -27,4 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec-rails", "~> 3.0"
   spec.add_development_dependency "sqlite3", "~> 1.3"
   spec.add_development_dependency "trailblazer", "~> 0.2"
+  spec.add_development_dependency "metric_fu"
+  spec.add_development_dependency "simplecov"
 end
