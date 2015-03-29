@@ -5,6 +5,28 @@
 
 Provides integration between ActiveAdmin and Trailblazer, cool hun?!
 
+## Disclaimer
+
+This is a BETA piece of software, please, don't use in production (yet)!
+
+It won't work until some PRs got merged on upstream repos:
+
+- [ ] Formtastic (Discover fields on a form object not just ActiveRecord) https://github.com/justinfrench/formtastic/pull/1142
+- [ ] Reform (Expose contract fields) https://github.com/apotonick/reform/pull/212
+- [ ] Trailblazer (Feature: Add operation collection) https://github.com/apotonick/trailblazer/pull/36
+- [ ] Trailblazer (Feature: Add pagination and scope to collection) https://github.com/apotonick/trailblazer/pull/39
+- [ ] Bonus! Trailblazer (Feature: Add authorization) https://github.com/apotonick/trailblazer/pull/41
+
+In meanwhile you can use my forks:
+
+```ruby
+gem "trailblazer", github: "fernandes/trailblazer", branch: "master"
+gem "reform", github: "fernandes/reform", branch: "feature/expose_contract_fields"
+gem "formtastic", github: "feature/get_fields_from_form_object"
+```
+
+I'm keeping my branches even with upstream's util everything is ok.
+
 ## Installation
 
 Add this line to your application's Gemfile:
