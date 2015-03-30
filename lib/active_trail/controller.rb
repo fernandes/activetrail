@@ -3,10 +3,20 @@ module ActiveTrail
     def self.included(base)
       if base.instance_methods.include?(:collection)
         Trailblazer::Operation::Controller.instance_eval do
-          # As activeadmin has a collection controller method we remove it
-          # so we don't override original method and use `trb_collection`
-          alias_method :trb_collection, :collection
-          remove_method :collection
+          begin
+            # As activeadmin has a collection controller method we remove it
+            # so we don't override original method and use `trb_collection`
+            # unless respond_to?(:trb_collection)
+            alias_method :trb_collection, :collection
+            remove_method :collection
+          rescue NameError
+            # So you're doing a null rescue here, do you like it? NO!
+            # But every modification on a AA related class, this class is reloaded
+            # and was trying make the alias_method and raise this exception
+            # don't know if its a rails issue, or my code issue
+            # if someone knows how to fix without this (unpolite) nil rescue
+            # please open an issue / PR
+          end
         end
         base.include Trailblazer::Operation::Controller
       end
