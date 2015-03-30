@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["fernandes@zertico.com"]
 
   spec.summary       = %q{Integration between ActiveAdmin and Trailblazer}
-  spec.description   = %q{Provide a cool, and seamless, integration between ActiveAdmin and Trailblazer, so you can you your operations inside ActiveAdmin}
+  spec.description   = %q{Provide a cool, and seamless, integration between ActiveAdmin and Trailblazer, so you can use your operations inside ActiveAdmin}
   spec.homepage      = "https://github.com/fernandes/activetrail"
   spec.license       = "MIT"
 
