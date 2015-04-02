@@ -1,5 +1,23 @@
 RSpec.describe Admin::BooksController, :type => :controller do
 
+  describe "GET baz" do
+    context "logged in" do
+      login_user
+      it "merges current_user on params" do
+        get :baz
+        expect(subject.params.has_key?(:current_user)).to eq(true)
+        expect(subject.params[:current_user].class).to eq(User)
+      end
+    end
+    
+    context "not logged in" do
+      it "do not merge current_user on params" do
+        get :baz
+        expect(subject.params.has_key?(:current_user)).to eq(false)
+      end
+    end
+  end
+ 
   describe "GET index" do
     it "assigns books" do
       book1 = Book.create(title: "show")

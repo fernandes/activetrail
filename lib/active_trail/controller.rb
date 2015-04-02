@@ -1,6 +1,16 @@
 module ActiveTrail
   module Controller
     def self.included(base)
+      base.class_eval do
+        before_action :current_user_merge
+      
+        def current_user_merge
+          if respond_to?(:current_user) && !current_user.nil?
+            params[:current_user] = current_user
+          end
+        end
+      end
+
       if base.instance_methods.include?(:collection)
         Trailblazer::Operation::Controller.instance_eval do
           begin

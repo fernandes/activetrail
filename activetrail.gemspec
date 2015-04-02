@@ -22,7 +22,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "codeclimate-test-reporter", '~> 0.4'
   spec.add_development_dependency "combustion", "~> 0.5.3"
   spec.add_development_dependency "database_cleaner", "~> 1.4"
+  spec.add_development_dependency "devise", '~> 3.4'
+  spec.add_development_dependency "factory_girl_rails", '~> 4.5'
   spec.add_development_dependency "bundler", "~> 1.7"
+  spec.add_development_dependency "pry", '~> 0.10'
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec-rails", "~> 3.0"
   spec.add_development_dependency "sqlite3", "~> 1.3"

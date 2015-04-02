@@ -24,6 +24,8 @@ require 'rubygems'
 require 'bundler'
 
 require 'combustion'
+require 'devise'
+require 'factory_girl_rails'
 Combustion.initialize! :all
 
 require 'trailblazer'
@@ -32,6 +34,11 @@ require 'rspec/rails'
 require 'database_cleaner'
 require File.join(File.dirname(__FILE__), 'internal/app/models', 'book.rb')
 require File.join(File.dirname(__FILE__), 'internal/app/admin', 'book.rb')
+
+# load support files
+Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each {|f| require f}
+# load factories
+Dir[File.join(File.dirname(__FILE__), 'factories/**/*.rb')].each {|f| require f}
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = true
@@ -132,6 +139,8 @@ require File.join(File.dirname(__FILE__), 'support', 'integration_example_group.
 
 RSpec.configure do |config|
   config.include RSpec::Rails::IntegrationExampleGroup, file_path: /\bspec\/requests\//
+  config.include Devise::TestHelpers, :type => :controller
+  config.extend ControllerMacros, :type => :controller
   
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
