@@ -23,16 +23,11 @@ module ActiveTrail
       require 'trailblazer/operation/controller/active_record'
       base.include Trailblazer::Operation::Controller::ActiveRecord # named instance variables.
     end
-
-    def scoped_collection
+    
+    def collection
+      return get_collection_ivar if get_collection_ivar
       trb_collection "#{trailblazer_operation_name}::Index".constantize do |op|
-        return @collection
-      end
-    end
-
-    def find_collection
-      trb_collection "#{trailblazer_operation_name}::Index".constantize do |op|
-        return @collection
+        set_collection_ivar(@collection)
       end
     end
     

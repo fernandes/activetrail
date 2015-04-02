@@ -2,9 +2,10 @@ RSpec.describe Admin::BooksController, :type => :controller do
 
   describe "GET index" do
     it "assigns books" do
-      book = Book.create
+      book1 = Book.create(title: "show")
+      book2 = Book.create(title: "hidden")
       get :index
-      expect(assigns(:books)).to eq([book])
+      expect(assigns(:books)).to eq([book1])
     end
     
     it "renders the index template" do

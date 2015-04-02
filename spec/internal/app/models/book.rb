@@ -28,6 +28,10 @@ class Book < ActiveRecord::Base
   
   class Index < Create
     include Pagination, Scope
+    
+    def fetch(params)
+      Book.where(title: "show")
+    end
   end
   
   class Show < Update
