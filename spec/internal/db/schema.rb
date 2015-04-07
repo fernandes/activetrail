@@ -9,6 +9,12 @@ ActiveRecord::Schema.define do
     t.timestamps null: false
   end
   
+  create_table(:comments, :force => true) do |t|
+    t.string :title
+    t.references :thing
+    t.timestamps null: false
+  end
+  
   create_table(:active_admin_comments, :force => true) do |t|
     t.string :namespace
     t.text   :body

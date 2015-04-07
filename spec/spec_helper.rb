@@ -35,6 +35,7 @@ require 'rspec/rails'
 require 'database_cleaner'
 require File.join(File.dirname(__FILE__), 'internal/app/models', 'book.rb')
 require File.join(File.dirname(__FILE__), 'internal/app/models', 'thing.rb')
+require File.join(File.dirname(__FILE__), 'internal/app/models', 'comment.rb')
 require File.join(File.dirname(__FILE__), 'internal/app/admin', 'book.rb')
 require File.join(File.dirname(__FILE__), 'internal/app/admin', 'thing.rb')
 
