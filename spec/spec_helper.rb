@@ -28,12 +28,15 @@ require 'devise'
 require 'factory_girl_rails'
 Combustion.initialize! :all
 
+require 'activeadmin'
 require 'trailblazer'
 require 'trailblazer/autoloading'
 require 'rspec/rails'
 require 'database_cleaner'
 require File.join(File.dirname(__FILE__), 'internal/app/models', 'book.rb')
+require File.join(File.dirname(__FILE__), 'internal/app/models', 'thing.rb')
 require File.join(File.dirname(__FILE__), 'internal/app/admin', 'book.rb')
+require File.join(File.dirname(__FILE__), 'internal/app/admin', 'thing.rb')
 
 # load support files
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each {|f| require f}
@@ -53,6 +56,7 @@ module ActiveAdminIntegrationSpecHelper
     ActiveAdmin.unload!
     ActiveAdmin.load!
     ActiveAdmin.register(Book)
+    ActiveAdmin.register(Thing)
     # ActiveAdmin.register(Post){ belongs_to :user, optional: true }
     reload_menus!
   end
@@ -142,6 +146,17 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
   
+  # Capybara logged in tests
+  # https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Capybara
+  config.include Warden::Test::Helpers
+  config.before :suite do
+    Warden.test_mode!
+  end
+
+  config.after :each do
+    Warden.test_reset!
+  end
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)

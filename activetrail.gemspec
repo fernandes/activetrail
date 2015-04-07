@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_development_dependency "capybara", '~> 2.4'
   spec.add_development_dependency "codeclimate-test-reporter", '~> 0.4'
   spec.add_development_dependency "combustion", "~> 0.5.3"
   spec.add_development_dependency "database_cleaner", "~> 1.4"

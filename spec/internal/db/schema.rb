@@ -4,6 +4,11 @@ ActiveRecord::Schema.define do
     t.timestamps null: false
   end
   
+  create_table(:things, :force => true) do |t|
+    t.string :title
+    t.timestamps null: false
+  end
+  
   create_table(:active_admin_comments, :force => true) do |t|
     t.string :namespace
     t.text   :body
@@ -43,6 +48,7 @@ ActiveRecord::Schema.define do
     # t.string   :unlock_token # Only if unlock strategy is :email or :both
     # t.datetime :locked_at
 
+    t.boolean  :admin
 
     t.timestamps null: true
   end
